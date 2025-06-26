@@ -25,6 +25,37 @@ async function renderDetail() {
             <p>${p.price}</p>
             <p>${p.description}</p>
         </div>`;
+    renderTransactions(id);
+}
+
+async function loadTransactions() {
+    const res = await fetch('data/transactions.json');
+    return res.json();
+}
+
+async function renderTransactions(id) {
+    const detail = document.getElementById('detail');
+    const data = await loadTransactions();
+    const list = data.filter(t => t.propertyId === id);
+    const section = document.createElement('section');
+    section.id = 'transactions';
+    section.innerHTML = '<h2>成交记录</h2>';
+    if (list.length === 0) {
+        section.innerHTML += '<p>暂无记录</p>';
+    } else {
+        const table = document.createElement('table');
+        table.innerHTML = `
+            <thead><tr><th>日期</th><th>价格</th><th>状态</th></tr></thead>
+            <tbody></tbody>`;
+        const tbody = table.querySelector('tbody');
+        list.forEach(t => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${t.date}</td><td>${t.price}</td><td>${t.status}</td>`;
+            tbody.appendChild(tr);
+        });
+        section.appendChild(table);
+    }
+    detail.appendChild(section);
 }
 
 renderDetail();
