@@ -1,0 +1,7 @@
+[
+  { "propertyId": 1, "date": "2024-05-01", "price": "3900 元/月", "status": "已租" },
+  { "propertyId": 1, "date": "2023-05-01", "price": "3800 元/月", "status": "已租" },
+  { "propertyId": 2, "date": "2024-04-15", "price": "2900 元/月", "status": "已租" },
+  { "propertyId": 3, "date": "2024-03-10", "price": "4800 元/月", "status": "已租" },
+  { "propertyId": 3, "date": "2023-11-20", "price": "4700 元/月", "status": "已租" }
+]
